@@ -189,3 +189,51 @@ std::ostream& operator<<(std::ostream& os, const bigint& obj) {
     return os;
 }
 
+/*
+std::string addition(const std::string& a, const std::string& b)
+{
+    // Declaración de variables al inicio
+    std::string A;
+    std::string B;
+    std::string result;
+    int carry;
+    size_t i;
+    int digit1;
+    int digit2;
+    int sum;
+
+    // Inicializaciones
+    A = a;
+    B = b;
+    carry = 0;
+
+    // reverse para facilitar la suma
+    std::reverse(A.begin(), A.end());
+    std::reverse(B.begin(), B.end());
+
+    // igualar longitudes
+    if (A.size() < B.size())
+        A.append(B.size() - A.size(), '0');
+    else if (B.size() < A.size())
+        B.append(A.size() - B.size(), '0');
+
+    // reservar espacio
+    result.reserve(A.size() + 1);
+
+    // sumar dígito por dígito
+    for (i = 0; i < A.size(); ++i) {
+        digit1 = A[i] - '0';
+        digit2 = B[i] - '0';
+        sum = digit1 + digit2 + carry;
+        carry = sum / 10;
+        result.push_back(static_cast<char>('0' + (sum % 10)));
+    }
+
+    if (carry != 0)
+        result.push_back(static_cast<char>('0' + carry));
+
+    std::reverse(result.begin(), result.end());
+    return result;
+}
+
+*/
