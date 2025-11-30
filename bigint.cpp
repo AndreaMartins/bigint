@@ -26,47 +26,6 @@ std::string bigint::getStr() const {
 }
 
 // =============================
-// Addition helper (safe & clean)
-// =============================
-std::string addition(const std::string& a, const std::string& b)
-{
-    std::string A = a;
-    std::string B = b;
-
-    // reverse for easy addition
-    std::reverse(A.begin(), A.end());
-    std::reverse(B.begin(), B.end());
-
-    // pad to same length
-    if (A.size() < B.size())
-        A.append(B.size() - A.size(), '0');
-    else if (B.size() < A.size())
-        B.append(A.size() - B.size(), '0');
-
-    std::string result;
-    result.reserve(A.size() + 1);
-
-    int carry = 0;
-
-    for (size_t i = 0; i < A.size(); ++i) {
-        int digit1 = A[i] - '0';
-        int digit2 = B[i] - '0';
-
-        int sum = digit1 + digit2 + carry;
-        carry = sum / 10;
-
-        char out = static_cast<char>('0' + (sum % 10));
-        result.push_back(out);
-    }
-
-    if (carry != 0)
-        result.push_back(static_cast<char>('0' + carry));
-
-    std::reverse(result.begin(), result.end());
-    return result;
-}
-
-// =============================
 // Addition operators
 // =============================
 bigint bigint::operator+(const bigint& other) const {
@@ -189,7 +148,11 @@ std::ostream& operator<<(std::ostream& os, const bigint& obj) {
     return os;
 }
 
-/*
+// =============================
+// Addition helper (safe & clean)
+// =============================
+
+
 std::string addition(const std::string& a, const std::string& b)
 {
     // Declaración de variables al inicio
@@ -236,4 +199,3 @@ std::string addition(const std::string& a, const std::string& b)
     return result;
 }
 
-*/
